@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C7AB3D953AE4662B6FF2B06 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F504D649F04F89B55A4EC5 /* libPods.a */; };
+		830DD085175EF56D00B2FF9D /* CXBrowserNavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DD074175EF56D00B2FF9D /* CXBrowserNavBarView.m */; };
+		830DD086175EF56D00B2FF9D /* CXBrowserToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DD076175EF56D00B2FF9D /* CXBrowserToolBarView.m */; };
+		830DD087175EF56D00B2FF9D /* CXPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DD078175EF56D00B2FF9D /* CXPhoto.m */; };
+		830DD088175EF56D00B2FF9D /* CXPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DD07A175EF56D00B2FF9D /* CXPhotoBrowser.m */; };
+		830DD089175EF56D00B2FF9D /* CXPhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DD07C175EF56D00B2FF9D /* CXPhotoLoadingView.m */; };
+		830DD08A175EF56D00B2FF9D /* CXTapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DD080175EF56D00B2FF9D /* CXTapDetectingImageView.m */; };
+		830DD08B175EF56D00B2FF9D /* CXTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DD082175EF56D00B2FF9D /* CXTapDetectingView.m */; };
+		830DD08C175EF56D00B2FF9D /* CXZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830DD084175EF56D00B2FF9D /* CXZoomingScrollView.m */; };
+		832D9E481720FE1500E334E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9E471720FE1500E334E3 /* UIKit.framework */; };
+		832D9E4A1720FE1500E334E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9E491720FE1500E334E3 /* Foundation.framework */; };
+		832D9E4C1720FE1500E334E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D9E4B1720FE1500E334E3 /* CoreGraphics.framework */; };
+		832D9E4F1720FE1500E334E3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 832D9E4E1720FE1500E334E3 /* Podfile */; };
+		832D9E541720FE1500E334E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 832D9E521720FE1500E334E3 /* InfoPlist.strings */; };
+		832D9E561720FE1500E334E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 832D9E551720FE1500E334E3 /* main.m */; };
+		832D9E5A1720FE1500E334E3 /* CXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 832D9E591720FE1500E334E3 /* CXAppDelegate.m */; };
+		832D9E5C1720FE1500E334E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D9E5B1720FE1500E334E3 /* Default.png */; };
+		832D9E5E1720FE1500E334E3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D9E5D1720FE1500E334E3 /* Default@2x.png */; };
+		832D9E601720FE1500E334E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D9E5F1720FE1500E334E3 /* Default-568h@2x.png */; };
+		832D9E631720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 832D9E621720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m */; };
+		832D9E671720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 832D9E661720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m */; };
+		8394220B172665B200E8B8D6 /* DemoRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83942209172665B100E8B8D6 /* DemoRootViewController.m */; };
+		8394220C172665B200E8B8D6 /* DemoRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8394220A172665B100E8B8D6 /* DemoRootViewController.xib */; };
+		8394220F172671A900E8B8D6 /* DemoPhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8394220E172671A900E8B8D6 /* DemoPhotoLoadingView.m */; };
+		839422121726721E00E8B8D6 /* DemoPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 839422111726721E00E8B8D6 /* DemoPhoto.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		45F504D649F04F89B55A4EC5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		830DD073175EF56D00B2FF9D /* CXBrowserNavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBrowserNavBarView.h; sourceTree = "<group>"; };
+		830DD074175EF56D00B2FF9D /* CXBrowserNavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBrowserNavBarView.m; sourceTree = "<group>"; };
+		830DD075175EF56D00B2FF9D /* CXBrowserToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBrowserToolBarView.h; sourceTree = "<group>"; };
+		830DD076175EF56D00B2FF9D /* CXBrowserToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBrowserToolBarView.m; sourceTree = "<group>"; };
+		830DD077175EF56D00B2FF9D /* CXPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPhoto.h; sourceTree = "<group>"; };
+		830DD078175EF56D00B2FF9D /* CXPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPhoto.m; sourceTree = "<group>"; };
+		830DD079175EF56D00B2FF9D /* CXPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPhotoBrowser.h; sourceTree = "<group>"; };
+		830DD07A175EF56D00B2FF9D /* CXPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPhotoBrowser.m; sourceTree = "<group>"; };
+		830DD07B175EF56D00B2FF9D /* CXPhotoLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPhotoLoadingView.h; sourceTree = "<group>"; };
+		830DD07C175EF56D00B2FF9D /* CXPhotoLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPhotoLoadingView.m; sourceTree = "<group>"; };
+		830DD07D175EF56D00B2FF9D /* CXPhotoLoadingViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPhotoLoadingViewProtocol.h; sourceTree = "<group>"; };
+		830DD07E175EF56D00B2FF9D /* CXPhotoProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPhotoProtocol.h; sourceTree = "<group>"; };
+		830DD07F175EF56D00B2FF9D /* CXTapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXTapDetectingImageView.h; sourceTree = "<group>"; };
+		830DD080175EF56D00B2FF9D /* CXTapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXTapDetectingImageView.m; sourceTree = "<group>"; };
+		830DD081175EF56D00B2FF9D /* CXTapDetectingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXTapDetectingView.h; sourceTree = "<group>"; };
+		830DD082175EF56D00B2FF9D /* CXTapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXTapDetectingView.m; sourceTree = "<group>"; };
+		830DD083175EF56D00B2FF9D /* CXZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXZoomingScrollView.h; sourceTree = "<group>"; };
+		830DD084175EF56D00B2FF9D /* CXZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXZoomingScrollView.m; sourceTree = "<group>"; };
+		832D9E441720FE1500E334E3 /* CXPhotoBrowserDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXPhotoBrowserDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		832D9E471720FE1500E334E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		832D9E491720FE1500E334E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		832D9E4B1720FE1500E334E3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		832D9E4E1720FE1500E334E3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		832D9E511720FE1500E334E3 /* CXPhotoBrowserDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CXPhotoBrowserDemo-Info.plist"; sourceTree = "<group>"; };
+		832D9E531720FE1500E334E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		832D9E551720FE1500E334E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		832D9E571720FE1500E334E3 /* CXPhotoBrowserDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CXPhotoBrowserDemo-Prefix.pch"; sourceTree = "<group>"; };
+		832D9E581720FE1500E334E3 /* CXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXAppDelegate.h; sourceTree = "<group>"; };
+		832D9E591720FE1500E334E3 /* CXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXAppDelegate.m; sourceTree = "<group>"; };
+		832D9E5B1720FE1500E334E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		832D9E5D1720FE1500E334E3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		832D9E5F1720FE1500E334E3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		832D9E611720FE1500E334E3 /* CXPhotoBrowserDemoConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CXPhotoBrowserDemoConfig.h; path = Classes/CXPhotoBrowserDemoConfig.h; sourceTree = "<group>"; };
+		832D9E621720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CXPhotoBrowserDemoConfig.m; path = Classes/CXPhotoBrowserDemoConfig.m; sourceTree = "<group>"; };
+		832D9E651720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CXPhotoBrowserDemoAPIClient.h; path = Classes/CXPhotoBrowserDemoAPIClient.h; sourceTree = "<group>"; };
+		832D9E661720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CXPhotoBrowserDemoAPIClient.m; path = Classes/CXPhotoBrowserDemoAPIClient.m; sourceTree = "<group>"; };
+		83942208172665B100E8B8D6 /* DemoRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoRootViewController.h; sourceTree = "<group>"; };
+		83942209172665B100E8B8D6 /* DemoRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoRootViewController.m; sourceTree = "<group>"; };
+		8394220A172665B100E8B8D6 /* DemoRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoRootViewController.xib; sourceTree = "<group>"; };
+		8394220D172671A900E8B8D6 /* DemoPhotoLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoPhotoLoadingView.h; sourceTree = "<group>"; };
+		8394220E172671A900E8B8D6 /* DemoPhotoLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoPhotoLoadingView.m; sourceTree = "<group>"; };
+		839422101726721E00E8B8D6 /* DemoPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoPhoto.h; sourceTree = "<group>"; };
+		839422111726721E00E8B8D6 /* DemoPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoPhoto.m; sourceTree = "<group>"; };
+		CAC95EEACD834C6FA56EEF17 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		832D9E411720FE1500E334E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				832D9E481720FE1500E334E3 /* UIKit.framework in Frameworks */,
+				832D9E4A1720FE1500E334E3 /* Foundation.framework in Frameworks */,
+				832D9E4C1720FE1500E334E3 /* CoreGraphics.framework in Frameworks */,
+				5C7AB3D953AE4662B6FF2B06 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		830DD072175EF56D00B2FF9D /* CXPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				830DD073175EF56D00B2FF9D /* CXBrowserNavBarView.h */,
+				830DD074175EF56D00B2FF9D /* CXBrowserNavBarView.m */,
+				830DD075175EF56D00B2FF9D /* CXBrowserToolBarView.h */,
+				830DD076175EF56D00B2FF9D /* CXBrowserToolBarView.m */,
+				830DD077175EF56D00B2FF9D /* CXPhoto.h */,
+				830DD078175EF56D00B2FF9D /* CXPhoto.m */,
+				830DD079175EF56D00B2FF9D /* CXPhotoBrowser.h */,
+				830DD07A175EF56D00B2FF9D /* CXPhotoBrowser.m */,
+				830DD07B175EF56D00B2FF9D /* CXPhotoLoadingView.h */,
+				830DD07C175EF56D00B2FF9D /* CXPhotoLoadingView.m */,
+				830DD07D175EF56D00B2FF9D /* CXPhotoLoadingViewProtocol.h */,
+				830DD07E175EF56D00B2FF9D /* CXPhotoProtocol.h */,
+				830DD07F175EF56D00B2FF9D /* CXTapDetectingImageView.h */,
+				830DD080175EF56D00B2FF9D /* CXTapDetectingImageView.m */,
+				830DD081175EF56D00B2FF9D /* CXTapDetectingView.h */,
+				830DD082175EF56D00B2FF9D /* CXTapDetectingView.m */,
+				830DD083175EF56D00B2FF9D /* CXZoomingScrollView.h */,
+				830DD084175EF56D00B2FF9D /* CXZoomingScrollView.m */,
+			);
+			path = CXPhotoBrowser;
+			sourceTree = SOURCE_ROOT;
+		};
+		832D9E3B1720FE1500E334E3 = {
+			isa = PBXGroup;
+			children = (
+				832D9E4D1720FE1500E334E3 /* CXPhotoBrowserDemo */,
+				832D9E461720FE1500E334E3 /* Frameworks */,
+				832D9E451720FE1500E334E3 /* Products */,
+				CAC95EEACD834C6FA56EEF17 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		832D9E451720FE1500E334E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				832D9E441720FE1500E334E3 /* CXPhotoBrowserDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		832D9E461720FE1500E334E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				832D9E471720FE1500E334E3 /* UIKit.framework */,
+				832D9E491720FE1500E334E3 /* Foundation.framework */,
+				832D9E4B1720FE1500E334E3 /* CoreGraphics.framework */,
+				45F504D649F04F89B55A4EC5 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832D9E4D1720FE1500E334E3 /* CXPhotoBrowserDemo */ = {
+			isa = PBXGroup;
+			children = (
+				830DD072175EF56D00B2FF9D /* CXPhotoBrowser */,
+				832D9E4E1720FE1500E334E3 /* Podfile */,
+				832D9E581720FE1500E334E3 /* CXAppDelegate.h */,
+				832D9E591720FE1500E334E3 /* CXAppDelegate.m */,
+				832D9E611720FE1500E334E3 /* CXPhotoBrowserDemoConfig.h */,
+				832D9E621720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m */,
+				832D9E721720FFE100E334E3 /* Demo Subclasses */,
+				83942208172665B100E8B8D6 /* DemoRootViewController.h */,
+				83942209172665B100E8B8D6 /* DemoRootViewController.m */,
+				8394220A172665B100E8B8D6 /* DemoRootViewController.xib */,
+				832D9E641720FE1500E334E3 /* Networking */,
+				832D9E501720FE1500E334E3 /* Supporting Files */,
+			);
+			path = CXPhotoBrowserDemo;
+			sourceTree = "<group>";
+		};
+		832D9E501720FE1500E334E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				832D9E511720FE1500E334E3 /* CXPhotoBrowserDemo-Info.plist */,
+				832D9E521720FE1500E334E3 /* InfoPlist.strings */,
+				832D9E551720FE1500E334E3 /* main.m */,
+				832D9E571720FE1500E334E3 /* CXPhotoBrowserDemo-Prefix.pch */,
+				832D9E5B1720FE1500E334E3 /* Default.png */,
+				832D9E5D1720FE1500E334E3 /* Default@2x.png */,
+				832D9E5F1720FE1500E334E3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		832D9E641720FE1500E334E3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				832D9E651720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.h */,
+				832D9E661720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		832D9E721720FFE100E334E3 /* Demo Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				8394220D172671A900E8B8D6 /* DemoPhotoLoadingView.h */,
+				8394220E172671A900E8B8D6 /* DemoPhotoLoadingView.m */,
+				839422101726721E00E8B8D6 /* DemoPhoto.h */,
+				839422111726721E00E8B8D6 /* DemoPhoto.m */,
+			);
+			name = "Demo Subclasses";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		832D9E431720FE1500E334E3 /* CXPhotoBrowserDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 832D9E6A1720FE1500E334E3 /* Build configuration list for PBXNativeTarget "CXPhotoBrowserDemo" */;
+			buildPhases = (
+				C66F631643354DEA9321188B /* Check Pods Manifest.lock */,
+				832D9E401720FE1500E334E3 /* Sources */,
+				832D9E411720FE1500E334E3 /* Frameworks */,
+				832D9E421720FE1500E334E3 /* Resources */,
+				BDC3718383BB4A9D9BB377F0 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CXPhotoBrowserDemo;
+			productName = CXPhotoBrowserDemo;
+			productReference = 832D9E441720FE1500E334E3 /* CXPhotoBrowserDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		832D9E3C1720FE1500E334E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CX;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = ChrisXu;
+			};
+			buildConfigurationList = 832D9E3F1720FE1500E334E3 /* Build configuration list for PBXProject "CXPhotoBrowserDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 832D9E3B1720FE1500E334E3;
+			productRefGroup = 832D9E451720FE1500E334E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				832D9E431720FE1500E334E3 /* CXPhotoBrowserDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		832D9E421720FE1500E334E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				832D9E4F1720FE1500E334E3 /* Podfile in Resources */,
+				832D9E541720FE1500E334E3 /* InfoPlist.strings in Resources */,
+				832D9E5C1720FE1500E334E3 /* Default.png in Resources */,
+				832D9E5E1720FE1500E334E3 /* Default@2x.png in Resources */,
+				832D9E601720FE1500E334E3 /* Default-568h@2x.png in Resources */,
+				8394220C172665B200E8B8D6 /* DemoRootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BDC3718383BB4A9D9BB377F0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		C66F631643354DEA9321188B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sanbox is not in sync with the Podfile.lock. Run 'pod install'.\nEOM\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		832D9E401720FE1500E334E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				832D9E561720FE1500E334E3 /* main.m in Sources */,
+				832D9E5A1720FE1500E334E3 /* CXAppDelegate.m in Sources */,
+				832D9E631720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m in Sources */,
+				832D9E671720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m in Sources */,
+				8394220B172665B200E8B8D6 /* DemoRootViewController.m in Sources */,
+				8394220F172671A900E8B8D6 /* DemoPhotoLoadingView.m in Sources */,
+				839422121726721E00E8B8D6 /* DemoPhoto.m in Sources */,
+				830DD085175EF56D00B2FF9D /* CXBrowserNavBarView.m in Sources */,
+				830DD086175EF56D00B2FF9D /* CXBrowserToolBarView.m in Sources */,
+				830DD087175EF56D00B2FF9D /* CXPhoto.m in Sources */,
+				830DD088175EF56D00B2FF9D /* CXPhotoBrowser.m in Sources */,
+				830DD089175EF56D00B2FF9D /* CXPhotoLoadingView.m in Sources */,
+				830DD08A175EF56D00B2FF9D /* CXTapDetectingImageView.m in Sources */,
+				830DD08B175EF56D00B2FF9D /* CXTapDetectingView.m in Sources */,
+				830DD08C175EF56D00B2FF9D /* CXZoomingScrollView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		832D9E521720FE1500E334E3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				832D9E531720FE1500E334E3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		832D9E681720FE1500E334E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		832D9E691720FE1500E334E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		832D9E6B1720FE1500E334E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAC95EEACD834C6FA56EEF17 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CXPhotoBrowserDemo/CXPhotoBrowserDemo-Prefix.pch";
+				INFOPLIST_FILE = "CXPhotoBrowserDemo/CXPhotoBrowserDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		832D9E6C1720FE1500E334E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAC95EEACD834C6FA56EEF17 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CXPhotoBrowserDemo/CXPhotoBrowserDemo-Prefix.pch";
+				INFOPLIST_FILE = "CXPhotoBrowserDemo/CXPhotoBrowserDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		832D9E3F1720FE1500E334E3 /* Build configuration list for PBXProject "CXPhotoBrowserDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				832D9E681720FE1500E334E3 /* Debug */,
+				832D9E691720FE1500E334E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		832D9E6A1720FE1500E334E3 /* Build configuration list for PBXNativeTarget "CXPhotoBrowserDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				832D9E6B1720FE1500E334E3 /* Debug */,
+				832D9E6C1720FE1500E334E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 832D9E3C1720FE1500E334E3 /* Project object */;
+}
