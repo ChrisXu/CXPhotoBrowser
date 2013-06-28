@@ -13,10 +13,9 @@
 @interface CXTapDetectingImageView : UIImageView
 
 @property (nonatomic, assign) id <CXTapDetectingImageViewDelegate> tapDelegate;
-//- (void)handleSingleTap:(UITouch *)touch;
-//- (void)handleDoubleTap:(UITouch *)touch;
-//- (void)handleTripleTap:(UITouch *)touch;
-//- (void)handlePan:()
+- (void)handleSingleTap:(UITouch *)touch;
+- (void)handleDoubleTap:(UITouch *)touch;
+- (void)handleTripleTap:(UITouch *)touch;
 
 @end
 

@@ -28,6 +28,9 @@
 		832D9E601720FE1500E334E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D9E5F1720FE1500E334E3 /* Default-568h@2x.png */; };
 		832D9E631720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 832D9E621720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m */; };
 		832D9E671720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 832D9E661720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m */; };
+		8330BA9D177D8B2F008E230B /* toolbarBKG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8330BA9B177D8B2F008E230B /* toolbarBKG.png */; };
+		8330BA9E177D8B2F008E230B /* toolbarBKG@2x 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8330BA9C177D8B2F008E230B /* toolbarBKG@2x 2.png */; };
+		8330BAA0177D8E5E008E230B /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 8330BA9F177D8E5E008E230B /* like.png */; };
 		8394220B172665B200E8B8D6 /* DemoRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83942209172665B100E8B8D6 /* DemoRootViewController.m */; };
 		8394220C172665B200E8B8D6 /* DemoRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8394220A172665B100E8B8D6 /* DemoRootViewController.xib */; };
 		8394220F172671A900E8B8D6 /* DemoPhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8394220E172671A900E8B8D6 /* DemoPhotoLoadingView.m */; };
@@ -72,6 +75,9 @@
 		832D9E621720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CXPhotoBrowserDemoConfig.m; path = Classes/CXPhotoBrowserDemoConfig.m; sourceTree = "<group>"; };
 		832D9E651720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CXPhotoBrowserDemoAPIClient.h; path = Classes/CXPhotoBrowserDemoAPIClient.h; sourceTree = "<group>"; };
 		832D9E661720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CXPhotoBrowserDemoAPIClient.m; path = Classes/CXPhotoBrowserDemoAPIClient.m; sourceTree = "<group>"; };
+		8330BA9B177D8B2F008E230B /* toolbarBKG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbarBKG.png; sourceTree = SOURCE_ROOT; };
+		8330BA9C177D8B2F008E230B /* toolbarBKG@2x 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarBKG@2x 2.png"; sourceTree = SOURCE_ROOT; };
+		8330BA9F177D8E5E008E230B /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = SOURCE_ROOT; };
 		83942208172665B100E8B8D6 /* DemoRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoRootViewController.h; sourceTree = "<group>"; };
 		83942209172665B100E8B8D6 /* DemoRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoRootViewController.m; sourceTree = "<group>"; };
 		8394220A172665B100E8B8D6 /* DemoRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoRootViewController.xib; sourceTree = "<group>"; };
@@ -100,22 +106,17 @@
 		830DD072175EF56D00B2FF9D /* CXPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				830DD073175EF56D00B2FF9D /* CXBrowserNavBarView.h */,
-				830DD074175EF56D00B2FF9D /* CXBrowserNavBarView.m */,
-				830DD075175EF56D00B2FF9D /* CXBrowserToolBarView.h */,
-				830DD076175EF56D00B2FF9D /* CXBrowserToolBarView.m */,
-				830DD077175EF56D00B2FF9D /* CXPhoto.h */,
-				830DD078175EF56D00B2FF9D /* CXPhoto.m */,
-				830DD079175EF56D00B2FF9D /* CXPhotoBrowser.h */,
-				830DD07A175EF56D00B2FF9D /* CXPhotoBrowser.m */,
-				830DD07B175EF56D00B2FF9D /* CXPhotoLoadingView.h */,
-				830DD07C175EF56D00B2FF9D /* CXPhotoLoadingView.m */,
+				83F9A2E4177D70CA00E3C42F /* customize UI */,
 				830DD07D175EF56D00B2FF9D /* CXPhotoLoadingViewProtocol.h */,
 				830DD07E175EF56D00B2FF9D /* CXPhotoProtocol.h */,
+				830DD077175EF56D00B2FF9D /* CXPhoto.h */,
+				830DD078175EF56D00B2FF9D /* CXPhoto.m */,
 				830DD07F175EF56D00B2FF9D /* CXTapDetectingImageView.h */,
 				830DD080175EF56D00B2FF9D /* CXTapDetectingImageView.m */,
 				830DD081175EF56D00B2FF9D /* CXTapDetectingView.h */,
 				830DD082175EF56D00B2FF9D /* CXTapDetectingView.m */,
+				830DD079175EF56D00B2FF9D /* CXPhotoBrowser.h */,
+				830DD07A175EF56D00B2FF9D /* CXPhotoBrowser.m */,
 				830DD083175EF56D00B2FF9D /* CXZoomingScrollView.h */,
 				830DD084175EF56D00B2FF9D /* CXZoomingScrollView.m */,
 			);
@@ -173,6 +174,9 @@
 		832D9E501720FE1500E334E3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8330BA9F177D8E5E008E230B /* like.png */,
+				8330BA9B177D8B2F008E230B /* toolbarBKG.png */,
+				8330BA9C177D8B2F008E230B /* toolbarBKG@2x 2.png */,
 				832D9E511720FE1500E334E3 /* CXPhotoBrowserDemo-Info.plist */,
 				832D9E521720FE1500E334E3 /* InfoPlist.strings */,
 				832D9E551720FE1500E334E3 /* main.m */,
@@ -202,6 +206,19 @@
 				839422111726721E00E8B8D6 /* DemoPhoto.m */,
 			);
 			name = "Demo Subclasses";
+			sourceTree = "<group>";
+		};
+		83F9A2E4177D70CA00E3C42F /* customize UI */ = {
+			isa = PBXGroup;
+			children = (
+				830DD073175EF56D00B2FF9D /* CXBrowserNavBarView.h */,
+				830DD074175EF56D00B2FF9D /* CXBrowserNavBarView.m */,
+				830DD075175EF56D00B2FF9D /* CXBrowserToolBarView.h */,
+				830DD076175EF56D00B2FF9D /* CXBrowserToolBarView.m */,
+				830DD07B175EF56D00B2FF9D /* CXPhotoLoadingView.h */,
+				830DD07C175EF56D00B2FF9D /* CXPhotoLoadingView.m */,
+			);
+			name = "customize UI";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +281,9 @@
 				832D9E5E1720FE1500E334E3 /* Default@2x.png in Resources */,
 				832D9E601720FE1500E334E3 /* Default-568h@2x.png in Resources */,
 				8394220C172665B200E8B8D6 /* DemoRootViewController.xib in Resources */,
+				8330BA9D177D8B2F008E230B /* toolbarBKG.png in Resources */,
+				8330BA9E177D8B2F008E230B /* toolbarBKG@2x 2.png in Resources */,
+				8330BAA0177D8E5E008E230B /* like.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

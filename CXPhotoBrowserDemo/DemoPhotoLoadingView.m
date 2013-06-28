@@ -29,7 +29,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
     [label setCenter:self.center];
     [label setTextAlignment:NSTextAlignmentCenter];
-    [label setText:@"讀取失敗"];
+    [label setText:@"Loading Failure"];
     [label setFont:[UIFont boldSystemFontOfSize:20.]];
     [label setTextColor:[UIColor whiteColor]];
     [label setBackgroundColor:[UIColor clearColor]];

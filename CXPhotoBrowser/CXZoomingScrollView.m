@@ -286,20 +286,44 @@
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
     UIView *view = [super hitTest:point withEvent:event];
-//    NSTimeInterval system = [[NSProcessInfo processInfo] systemUptime];
-    
-//    if (system - event.timestamp > 0.1) {
-//        // not the event we were interested in
-//    } else {
-//        NSLog(@"Point: %@", NSStringFromCGPoint(point));
-//        NSLog(@"View: %@", view);
-//    }
     
     return view;
 }
 
+- (void)handleImageViewSingleTap:(CGPoint)touchPoint {
+    
+	[_photoBrowser performSelector:@selector(toggleControls) withObject:nil afterDelay:0.2];
+}
 
+- (void)handleImageViewDoubleTap:(CGPoint)touchPoint {
+	
+	// Cancel any single tap handling
+	[NSObject cancelPreviousPerformRequestsWithTarget:_photoBrowser];
+	
+	// Zoom
+	if (self.zoomScale == self.maximumZoomScale) {
+		
+		// Zoom out
+        [_photoBrowser setControlBarViewsHidden:NO animated:YES];
+		[self setZoomScale:self.minimumZoomScale animated:YES];
+		
+	} else {
+		
+		// Zoom in
+        [_photoBrowser setControlBarViewsHidden:YES animated:YES];
+		[self zoomToRect:CGRectMake(touchPoint.x, touchPoint.y, 1, 1) animated:YES];
+		
+	}
+	
+	// Delay controls
+}
 #pragma mark - CXTapDetectingImageViewDelegate
+- (void)imageView:(UIImageView *)imageView singleTapDetected:(UITouch *)touch {
+    [self handleImageViewSingleTap:[touch locationInView:imageView]];
+}
+- (void)imageView:(UIImageView *)imageView doubleTapDetected:(UITouch *)touch {
+    [self handleImageViewDoubleTap:[touch locationInView:imageView]];
+}
 
 #pragma mark - CXTapDetectingViewDelegate
 

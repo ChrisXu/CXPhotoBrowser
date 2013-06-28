@@ -85,6 +85,9 @@
 
 // Loadingview
 
+// Navigation
+- (void)currentPageDidUpdated;
+
 // Controls (NavigationBar & ToolBar)
 - (BOOL)shouldUseDefaultUINavigationBar;
 - (BOOL)isNavBarHidden;
@@ -110,6 +113,12 @@
 - (void)doneButtonPressed:(id)sender;
 
 @end
+
+static CGFloat kNavigationBarViewHeightPortrait = 44;
+static CGFloat kNavigationBarViewHeightLadnScape = 32;
+
+static CGFloat kToolBarViewHeightPortrait = 100;
+static CGFloat kToolBarViewHeightLadnScape = 100;
 
 @implementation CXPhotoBrowser
 @synthesize currentPhotoLoadingView;
@@ -348,6 +357,9 @@
     [_visiblePages removeAllObjects];
     [_recycledPages removeAllObjects];
     
+    // Navigation
+    [self currentPageDidUpdated];
+    
     // Content offset
 	_pagingScrollView.contentOffset = [self contentOffsetForPageAtIndex:_currentPageIndex];
     [self tilePages];
@@ -583,22 +595,22 @@
 
 - (CGRect)frameForNavigationBarViewAtOrientation:(UIInterfaceOrientation)orientation
 {
-    CGFloat height = 44;
+    CGFloat height = kNavigationBarViewHeightPortrait;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
-        UIInterfaceOrientationIsLandscape(orientation)) height = 32;
+        UIInterfaceOrientationIsLandscape(orientation)) height = kNavigationBarViewHeightLadnScape;
     
     return CGRectMake(0, 0, self.view.bounds.size.width, height);
 }
 
 - (CGRect)frameForControlBarViewAtOrientation:(UIInterfaceOrientation)orientation
 {
-    CGFloat height = 44;
+    CGFloat height = kToolBarViewHeightPortrait;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
-        UIInterfaceOrientationIsLandscape(orientation)) height = 32;
+        UIInterfaceOrientationIsLandscape(orientation)) height = kToolBarViewHeightLadnScape;
 	return CGRectMake(0, self.view.bounds.size.height - height, self.view.bounds.size.width, height);
 }
 
-#pragma mark - Navigation
+#pragma mark - Navigation & control
 - (void)setControlBarViewsHidden:(BOOL)hidden animated:(BOOL)animated
 {
     if (self.wantsFullScreenLayout) {
@@ -636,6 +648,15 @@
     [self setNavigationBarHidden:hidden animated:animated];
     [self setToolBarHidden:hidden animated:animated];
 	
+}
+
+// Navigation
+- (void)currentPageDidUpdated
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(photoBrowser:didChangedToPageAtIndex:)])
+    {
+        [_delegate photoBrowser:self didChangedToPageAtIndex:_currentPageIndex];
+    }
 }
 
 - (BOOL)shouldUseDefaultUINavigationBar
@@ -696,13 +717,13 @@
     }
     else
     {
-        return (browserNavigationBarView == 0);
+        return (browserNavigationBarView.alpha == 0);
     }
 }
 
 - (BOOL)isToolBarHidden
 {
-    return (browserToolBarView == 0);
+    return (browserToolBarView.alpha == 0);
 }
 
 - (BOOL)areControlsHidden
@@ -953,6 +974,6 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	// Update nav when page changes
-//	[self updateNavigation];
+	[self currentPageDidUpdated];
 }
 @end

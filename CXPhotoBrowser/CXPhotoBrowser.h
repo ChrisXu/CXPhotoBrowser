@@ -57,6 +57,7 @@
 
 @protocol CXPhotoBrowserDelegate <NSObject>
 
+@optional
 - (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index;
 
 @end
