@@ -639,12 +639,6 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         self.navigationController.navigationBar.frame = navBarFrame;
     }
     
-    // Captions Chris undone
-//    NSMutableSet *captionViews = [[[NSMutableSet alloc] initWithCapacity:_visiblePages.count] autorelease];
-//    for (MWZoomingScrollView *page in _visiblePages) {
-//        if (page.captionView) [captionViews addObject:page.captionView];
-//    }
-    
     [self setNavigationBarHidden:hidden animated:animated];
     [self setToolBarHidden:hidden animated:animated];
 	

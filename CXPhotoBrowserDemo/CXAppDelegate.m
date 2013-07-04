@@ -27,8 +27,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     //Set your rootViewController
     DemoRootViewController *rootViewController = [[DemoRootViewController alloc] initWithNibName:@"DemoRootViewController" bundle:nil];
     
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = rootViewController;
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
     return YES;

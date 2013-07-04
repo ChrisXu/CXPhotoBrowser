@@ -1,7 +1,7 @@
 CXPhotoBrowser - Customize your photobrowser for iOS.
 ==============
 
-Base on refactoring [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser). Removing the dependcy with other library, so you can choose your favorite Async library to download image online. 
+Inspiring by [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser). Removing the dependcy with other library, so you can choose your favorite Async library to download image online. 
 Supporting with high level of customization, including Navigationbar, Toolbar, Loading process placeholder and Loading failure placeholder.
 You can build a photo browser similar to facebook.
 
@@ -76,9 +76,9 @@ CXPhoto *photo = [[CXPhoto alloc] initWithURL:<#(NSURL)#>];
 ```
 
 **Coming soon**:
-* Handle orientation chagne
-* Photo caption
-* Support gesture (Single Tap, Double Tap) 
+* Handle orientation chagne.
+* Photo Reload.
+* Support more gesture. 
 
 **Supports**:
 * iOS 4 or later.

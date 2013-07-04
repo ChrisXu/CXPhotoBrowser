@@ -52,7 +52,6 @@
 //- (id <CXPhotoProtocol>)photoBrowser:(CXPhotoBrowser *)photoBrowser photoLoadingViewAtIndex:(NSUInteger)index;
 - (CXBrowserNavBarView *)browserNavigationBarViewOfOfPhotoBrowser:(CXPhotoBrowser *)photoBrowser withSize:(CGSize)size;
 - (CXBrowserToolBarView *)browserToolBarViewOfPhotoBrowser:(CXPhotoBrowser *)photoBrowser withSize:(CGSize)size;
-//- (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index;
 @end
 
 @protocol CXPhotoBrowserDelegate <NSObject>

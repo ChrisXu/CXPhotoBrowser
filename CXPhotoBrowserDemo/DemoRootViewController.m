@@ -85,7 +85,7 @@
 
 - (IBAction)showBrowserWithPush:(id)sender
 {
-    
+    [self.navigationController pushViewController:self.browser animated:YES];
 }
 
 #pragma mark - CXPhotoBrowserDataSource
