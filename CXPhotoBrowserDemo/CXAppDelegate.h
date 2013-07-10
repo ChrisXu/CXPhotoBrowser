@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CXPhotoBrowserDemoConfig.h"
-
 @interface CXAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

@@ -21,9 +21,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
-    //Replace UINavigationBar backgroundimage with your customize image. iOS5 or later
-//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"<# Your UINavigationBar BackgroundImage #>"] forBarMetrics:UIBarMetricsDefault];
-    
     //Set your rootViewController
     DemoRootViewController *rootViewController = [[DemoRootViewController alloc] initWithNibName:@"DemoRootViewController" bundle:nil];
     

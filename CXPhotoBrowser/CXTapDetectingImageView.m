@@ -61,19 +61,19 @@
 }
 
 - (void)handleSingleTap:(UITouch *)touch {
-    NSLog(@"handleSingleTap");
+//    NSLog(@"handleSingleTap");
 	if ([tapDelegate respondsToSelector:@selector(imageView:singleTapDetected:)])
 		[tapDelegate imageView:self singleTapDetected:touch];
 }
 
 - (void)handleDoubleTap:(UITouch *)touch {
-    NSLog(@"handleDoubleTap");
+//    NSLog(@"handleDoubleTap");
 	if ([tapDelegate respondsToSelector:@selector(imageView:doubleTapDetected:)])
 		[tapDelegate imageView:self doubleTapDetected:touch];
 }
 
 - (void)handleTripleTap:(UITouch *)touch {
-    NSLog(@"handleTripleTap");
+//    NSLog(@"handleTripleTap");
 	if ([tapDelegate respondsToSelector:@selector(imageView:tripleTapDetected:)])
 		[tapDelegate imageView:self tripleTapDetected:touch];
 }

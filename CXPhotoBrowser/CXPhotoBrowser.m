@@ -190,21 +190,6 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     _pagingScrollView.contentSize = [self contentSizeForPagingScrollView];
 	[self.view addSubview:_pagingScrollView];
     
-    //Setup navigationbar view
-    _shouldUseDefaultUINavigationBar = [self shouldUseDefaultUINavigationBar];
-    if (!_shouldUseDefaultUINavigationBar)
-    {
-        [self resetCustomlizeBrowserNavigationBarView];
-        [self.view addSubview:browserNavigationBarView];
-    }
-    
-    //Set up controlbar view
-    [self resetCustomlizeBrowserToolBarView];
-    [self.view addSubview:browserToolBarView];
-    
-    // Update
-    [self reloadData];
-    
     [super viewDidLoad];
 }
 
@@ -217,6 +202,22 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         _previousStatusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:animated];
     }
+    
+    [browserNavigationBarView removeFromSuperview];
+    //Setup navigationbar view
+    _shouldUseDefaultUINavigationBar = [self shouldUseDefaultUINavigationBar];
+    if (!_shouldUseDefaultUINavigationBar)
+    {
+        [self resetCustomlizeBrowserNavigationBarView];
+        [self.view addSubview:browserNavigationBarView];
+    }
+    
+    //Set up tool view
+    [self resetCustomlizeBrowserToolBarView];
+    [self.view addSubview:browserToolBarView];
+    
+    // Update
+    [self reloadData];
     
     if (!_viewIsActive && [self.navigationController.viewControllers objectAtIndex:0] != self) {
         [self storePreviousNavBarAppearance];
@@ -241,7 +242,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     // Controls
     [self.navigationController.navigationBar.layer removeAllAnimations]; // Stop all animations on nav bar
     [NSObject cancelPreviousPerformRequestsWithTarget:self]; // Cancel any pending toggles from taps
-    [self setControlBarViewsHidden:NO animated:NO];
+    [self setToolBarViewsHidden:NO animated:NO];
     
     // Status bar
     if (self.wantsFullScreenLayout && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
@@ -323,13 +324,13 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     {
         browserNavigationBarView = [[CXBrowserNavBarView alloc] initWithFrame:frame];
     }
-    [self.view addSubview:browserNavigationBarView];
+//    [self.view addSubview:browserNavigationBarView];
     [browserNavigationBarView assignPhotoBrowser:self];
 }
 
 - (void)resetCustomlizeBrowserToolBarView
 {
-    CGRect frame = [self frameForControlBarViewAtOrientation:self.interfaceOrientation];
+    CGRect frame = [self frameForToolBarViewAtOrientation:self.interfaceOrientation];
     browserToolBarView = nil;
     if (_dataSource && [_dataSource respondsToSelector:@selector(browserToolBarViewOfPhotoBrowser:withSize:)])
     {
@@ -550,10 +551,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     if (index < [self numberOfPhotos]) {
 		CGRect pageFrame = [self frameForPageAtIndex:index];
 		_pagingScrollView.contentOffset = CGPointMake(pageFrame.origin.x - PADDING, 0);
-        if (_delegate && [_delegate respondsToSelector:@selector(photoBrowser:didChangedToPageAtIndex:)])
-        {
-            [_delegate photoBrowser:self didChangedToPageAtIndex:index];
-        }
+        [self currentPageDidUpdated];
 	}
 }
 #pragma mark - Frame Calculations
@@ -596,22 +594,44 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (CGRect)frameForNavigationBarViewAtOrientation:(UIInterfaceOrientation)orientation
 {
     CGFloat height = kNavigationBarViewHeightPortrait;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
-        UIInterfaceOrientationIsLandscape(orientation)) height = kNavigationBarViewHeightLadnScape;
+    if (_dataSource && [_dataSource respondsToSelector:@selector(heightForNavigationBarInInterfaceOrientation:)])
+    {
+        height = [_dataSource heightForNavigationBarInInterfaceOrientation:orientation];
+    }
+    else
+    {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
+            UIInterfaceOrientationIsLandscape(orientation))
+        {
+            height = kNavigationBarViewHeightLadnScape;
+        }
+    }
     
     return CGRectMake(0, 0, self.view.bounds.size.width, height);
 }
 
-- (CGRect)frameForControlBarViewAtOrientation:(UIInterfaceOrientation)orientation
+- (CGRect)frameForToolBarViewAtOrientation:(UIInterfaceOrientation)orientation
 {
+
     CGFloat height = kToolBarViewHeightPortrait;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
-        UIInterfaceOrientationIsLandscape(orientation)) height = kToolBarViewHeightLadnScape;
+    if (_dataSource && [_dataSource respondsToSelector:@selector(heightForToolBarInInterfaceOrientation:)])
+    {
+        height = [_dataSource heightForToolBarInInterfaceOrientation:orientation];
+    }
+    else
+    {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
+            UIInterfaceOrientationIsLandscape(orientation))
+        {
+            height = kToolBarViewHeightLadnScape;
+        }
+    }
+    
 	return CGRectMake(0, self.view.bounds.size.height - height, self.view.bounds.size.width, height);
 }
 
 #pragma mark - Navigation & control
-- (void)setControlBarViewsHidden:(BOOL)hidden animated:(BOOL)animated
+- (void)setToolBarViewsHidden:(BOOL)hidden animated:(BOOL)animated
 {
     if (self.wantsFullScreenLayout) {
         
@@ -650,6 +670,11 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     if (_delegate && [_delegate respondsToSelector:@selector(photoBrowser:didChangedToPageAtIndex:)])
     {
         [_delegate photoBrowser:self didChangedToPageAtIndex:_currentPageIndex];
+    }
+    
+    if (_shouldUseDefaultUINavigationBar)
+    {
+        self.title = [NSString stringWithFormat:@"%i of %i", _currentPageIndex+1, _photoCount];
     }
 }
 
@@ -707,7 +732,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 {
     if (_shouldUseDefaultUINavigationBar)
     {
-        return self.navigationController.navigationBarHidden;
+        return (self.navigationController.navigationBar.alpha == 0);
     }
     else
     {
@@ -727,7 +752,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (void)toggleControls
 {
-    [self setControlBarViewsHidden:![self areControlsHidden] animated:YES];
+    [self setToolBarViewsHidden:![self areControlsHidden] animated:YES];
 }
 
 - (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated
@@ -949,16 +974,6 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 	_currentPageIndex = index;
 	if (_currentPageIndex != previousCurrentPage) {
         [self didStartViewingPageAtIndex:index];
-    }
-	
-    if (scrollView.panGestureRecognizer.state == UIGestureRecognizerStateBegan)
-    {
-        NSLog(@"Browser panGestureRecognizer Begin");
-    }
-    
-    if (scrollView.panGestureRecognizer.state == UIGestureRecognizerStateEnded)
-    {
-        NSLog(@" BrowserpanGestureRecognizer End");
     }
 }
 

@@ -194,7 +194,6 @@
 #pragma mark - CXPhotoBrowserDelegate
 - (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index
 {
-    NSLog(@"index:%i",index);
     UILabel *titleLabel = (UILabel *)[navBarView viewWithTag:BROWSER_TITLE_LBL_TAG];
     if (titleLabel)
     {

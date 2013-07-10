@@ -93,7 +93,6 @@
 	if (!CGRectEqualToRect(_photoImageView.frame, frameToCenter))
     {
 		_photoImageView.frame = frameToCenter;
-        NSLog(@"%@",NSStringFromCGRect(frameToCenter));
 	}
     
 }
@@ -256,15 +255,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.panGestureRecognizer.state == UIGestureRecognizerStateBegan)
-    {
-        NSLog(@"panGestureRecognizer Begin");
-    }
-    
-    if (scrollView.panGestureRecognizer.state == UIGestureRecognizerStateEnded)
-    {
-        NSLog(@"panGestureRecognizer End");
-    }
+
 }
 
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
@@ -304,13 +295,13 @@
 	if (self.zoomScale == self.maximumZoomScale) {
 		
 		// Zoom out
-        [_photoBrowser setControlBarViewsHidden:NO animated:YES];
+        [_photoBrowser setToolBarViewsHidden:NO animated:YES];
 		[self setZoomScale:self.minimumZoomScale animated:YES];
 		
 	} else {
 		
 		// Zoom in
-        [_photoBrowser setControlBarViewsHidden:YES animated:YES];
+        [_photoBrowser setToolBarViewsHidden:YES animated:YES];
 		[self zoomToRect:CGRectMake(touchPoint.x, touchPoint.y, 1, 1) animated:YES];
 		
 	}

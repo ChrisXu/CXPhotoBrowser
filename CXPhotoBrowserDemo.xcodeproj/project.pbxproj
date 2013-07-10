@@ -26,7 +26,6 @@
 		832D9E5C1720FE1500E334E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D9E5B1720FE1500E334E3 /* Default.png */; };
 		832D9E5E1720FE1500E334E3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D9E5D1720FE1500E334E3 /* Default@2x.png */; };
 		832D9E601720FE1500E334E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832D9E5F1720FE1500E334E3 /* Default-568h@2x.png */; };
-		832D9E631720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 832D9E621720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m */; };
 		832D9E671720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 832D9E661720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m */; };
 		8330BA9D177D8B2F008E230B /* toolbarBKG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8330BA9B177D8B2F008E230B /* toolbarBKG.png */; };
 		8330BA9E177D8B2F008E230B /* toolbarBKG@2x 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8330BA9C177D8B2F008E230B /* toolbarBKG@2x 2.png */; };
@@ -71,8 +70,6 @@
 		832D9E5B1720FE1500E334E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		832D9E5D1720FE1500E334E3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		832D9E5F1720FE1500E334E3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		832D9E611720FE1500E334E3 /* CXPhotoBrowserDemoConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CXPhotoBrowserDemoConfig.h; path = Classes/CXPhotoBrowserDemoConfig.h; sourceTree = "<group>"; };
-		832D9E621720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CXPhotoBrowserDemoConfig.m; path = Classes/CXPhotoBrowserDemoConfig.m; sourceTree = "<group>"; };
 		832D9E651720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CXPhotoBrowserDemoAPIClient.h; path = Classes/CXPhotoBrowserDemoAPIClient.h; sourceTree = "<group>"; };
 		832D9E661720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CXPhotoBrowserDemoAPIClient.m; path = Classes/CXPhotoBrowserDemoAPIClient.m; sourceTree = "<group>"; };
 		8330BA9B177D8B2F008E230B /* toolbarBKG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbarBKG.png; sourceTree = SOURCE_ROOT; };
@@ -159,8 +156,6 @@
 				832D9E4E1720FE1500E334E3 /* Podfile */,
 				832D9E581720FE1500E334E3 /* CXAppDelegate.h */,
 				832D9E591720FE1500E334E3 /* CXAppDelegate.m */,
-				832D9E611720FE1500E334E3 /* CXPhotoBrowserDemoConfig.h */,
-				832D9E621720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m */,
 				832D9E721720FFE100E334E3 /* Demo Subclasses */,
 				83942208172665B100E8B8D6 /* DemoRootViewController.h */,
 				83942209172665B100E8B8D6 /* DemoRootViewController.m */,
@@ -327,7 +322,6 @@
 			files = (
 				832D9E561720FE1500E334E3 /* main.m in Sources */,
 				832D9E5A1720FE1500E334E3 /* CXAppDelegate.m in Sources */,
-				832D9E631720FE1500E334E3 /* CXPhotoBrowserDemoConfig.m in Sources */,
 				832D9E671720FE1500E334E3 /* CXPhotoBrowserDemoAPIClient.m in Sources */,
 				8394220B172665B200E8B8D6 /* DemoRootViewController.m in Sources */,
 				8394220F172671A900E8B8D6 /* DemoPhotoLoadingView.m in Sources */,

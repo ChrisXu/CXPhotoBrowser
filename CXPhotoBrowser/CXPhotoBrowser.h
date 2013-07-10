@@ -40,23 +40,68 @@
 - (void)resetCustomlizeBrowserToolBarView;
 
 // Navigation & control / Hiding / Showing
-- (void)setControlBarViewsHidden:(BOOL)hidden animated:(BOOL)animated;
+- (void)setToolBarViewsHidden:(BOOL)hidden animated:(BOOL)animated;
 
 @end
 
 @protocol CXPhotoBrowserDataSource <NSObject>
 @required
+
+/**
+ @param photoBrower The current photobrowser to present.
+ 
+ @return number of photos.
+ */
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(CXPhotoBrowser *)photoBrowser;
+
+/**
+ @param photoBrower The current photobrowser to present.
+ @param index 
+ 
+ @return CXPhoto for showing.
+ */
 - (id <CXPhotoProtocol>)photoBrowser:(CXPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
 @optional
-//- (id <CXPhotoProtocol>)photoBrowser:(CXPhotoBrowser *)photoBrowser photoLoadingViewAtIndex:(NSUInteger)index;
+
+/**
+ @param orientation 
+ 
+ @return Height for your customlize NavigationBarView.
+ */
+- (CGFloat)heightForNavigationBarInInterfaceOrientation:(UIInterfaceOrientation)orientation;
+
+/**
+ @param orientation 
+ 
+ @return Height for your customlize ToolBarView.
+ */
+- (CGFloat)heightForToolBarInInterfaceOrientation:(UIInterfaceOrientation)orientation;
+
+/**
+ @param photoBrower The current photobrowser to present.
+ @param size NavigationBarView will be resize as this parameter. Make sure your view will fit the size.
+ 
+ @return A customlize NavigationBarView to show on top.
+ */
 - (CXBrowserNavBarView *)browserNavigationBarViewOfOfPhotoBrowser:(CXPhotoBrowser *)photoBrowser withSize:(CGSize)size;
+
+/**
+ @param photoBrower The current photobrowser to present.
+ @param size ToolBarView will be resize as this parameter. Make sure your view will fit the size.
+ 
+ @return A customlize ToolBarView to show on bottom.
+ */
 - (CXBrowserToolBarView *)browserToolBarViewOfPhotoBrowser:(CXPhotoBrowser *)photoBrowser withSize:(CGSize)size;
 @end
 
 @protocol CXPhotoBrowserDelegate <NSObject>
 
 @optional
+
+/**
+ @param photoBrower The current photobrowser to present.
+ @param index The current showing index in photoBrowser.
+ */
 - (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index;
 
 @end
