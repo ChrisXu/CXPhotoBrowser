@@ -100,6 +100,7 @@
 // Data
 - (NSUInteger)numberOfPhotos;
 - (id<CXPhotoProtocol>)photoAtIndex:(NSUInteger)index;
+- (NSUInteger)indexOfPhoto:(id<CXPhotoProtocol>)photo;
 - (UIImage *)imageForPhoto:(id<CXPhotoProtocol>)photo;
 - (void)loadAdjacentPhotosIfNecessary:(id<CXPhotoProtocol>)photo;
 - (void)unloadAllUnderlyingPhotos;
@@ -664,6 +665,16 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 	
 }
 
+//Reload
+- (void)reloadCurrentPhoto
+{
+    id <CXPhotoProtocol> currentPhoto = [self photoAtIndex:_currentPageIndex];
+    if ([currentPhoto underlyingImage]) {
+        // photo loaded so load ajacent now
+        [self loadAdjacentPhotosIfNecessary:currentPhoto];
+    }
+}
+
 // Navigation
 - (void)currentPageDidUpdated
 {
@@ -832,6 +843,21 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     return photo;
 }
 
+- (NSUInteger)indexOfPhoto:(id<CXPhotoProtocol>)photo
+{
+    NSUInteger index = 0;
+    for (int i = 0; i < _photos.count; i++)
+    {
+        if ([[_photos objectAtIndex:i] isEqual:photo])
+        {
+            index = i;
+            break;
+        }
+    }
+    NSLog(@"%i,%i",index,_currentPageIndex);
+    return index;
+}
+
 - (UIImage *)imageForPhoto:(id<CXPhotoProtocol>)photo
 {
     if (photo) {
@@ -880,6 +906,8 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 {
     id <CXPhotoProtocol> photo = [notification object];
     //show loading view
+    NSUInteger index = [self indexOfPhoto:photo];
+    
     CXZoomingScrollView *page = [self pageDisplayingPhoto:photo];
     if (page)
     {

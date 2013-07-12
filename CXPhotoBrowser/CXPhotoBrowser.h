@@ -12,6 +12,14 @@
 #import "CXPhotoLoadingView.h"
 #import "CXBrowserNavBarView.h"
 #import "CXBrowserToolBarView.h"
+
+typedef enum
+{
+    CXPhotoStartLoading = 0,
+    CXPhotoFinishLoading = 1,
+    CXPhotoDidFailLoading = 2
+}CXPhotoLoadingStatus;
+
 @protocol CXPhotoBrowserDataSource;
 @protocol CXPhotoBrowserDelegate;
 @interface CXPhotoBrowser : UIViewController
@@ -42,6 +50,8 @@
 // Navigation & control / Hiding / Showing
 - (void)setToolBarViewsHidden:(BOOL)hidden animated:(BOOL)animated;
 
+//Reload
+//- (void)reloadCurrentPhoto; undone
 @end
 
 @protocol CXPhotoBrowserDataSource <NSObject>
@@ -104,4 +114,10 @@
  */
 - (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index;
 
+/**
+ @param photoBrower The current photobrowser to present.
+ @param index The current showing index in photoBrowser.
+ @param status 
+ */
+- (void)photoBrowser:(CXPhotoBrowser *)photoBrowser currentPhotoAtIndex:(NSUInteger)index didFinishedLoadingWithStatus:(CXPhotoLoadingStatus)status;
 @end
