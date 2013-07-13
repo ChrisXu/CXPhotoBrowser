@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "CXPhotoBrowser"
   s.version      = "1.0.0"
-  s.summary      = "A photo browser supporting with high level customization"
+  s.summary      = "A photo browser supporting with high level customization."
   s.description  = <<-DESC 
                     Inspiring by @MWPhotoBrowser. Removing the dependcy with other library, so you can choose your favorite Async library to download image online. Supporting with high level of customization, including Navigationbar, Toolbar, Loading process placeholder and Loading failure placeholder. You can build a photo browser similar to facebook.
                   DESC

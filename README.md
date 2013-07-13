@@ -6,9 +6,12 @@ Supporting with high level of customization, including Navigationbar, Toolbar, L
 You can build a photo browser similar to facebook.
 
 ---
+![ScreenShot 1](screenshot1.png), ![ScreenShot 2](screenshot2.png),
+
 usage like [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser)
 
 **How to use**
+
 
 *Create a photobrowser(CXPhotoBrowser).
 
