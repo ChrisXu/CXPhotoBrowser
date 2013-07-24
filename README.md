@@ -1,7 +1,7 @@
 CXPhotoBrowser - Customize your photobrowser for iOS.
 ==============
 
-Inspiring by [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser). Removing the dependcy with other library, so you can choose your favorite Async library to download image online. 
+A photo browser Inspiring by [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser). Removing the dependcy with other library, so you can choose your favorite Async library to download image online. 
 Supporting with high level of customization, including Navigationbar, Toolbar, Loading process placeholder and Loading failure placeholder.
 You can build a photo browser similar to facebook.
 
