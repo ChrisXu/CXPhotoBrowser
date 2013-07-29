@@ -122,7 +122,6 @@ static CGFloat kToolBarViewHeightPortrait = 100;
 static CGFloat kToolBarViewHeightLadnScape = 100;
 
 @implementation CXPhotoBrowser
-@synthesize currentPhotoLoadingView;
 @synthesize photoCount = _photoCount;
 @synthesize currentPageIndex = _currentPageIndex;
 

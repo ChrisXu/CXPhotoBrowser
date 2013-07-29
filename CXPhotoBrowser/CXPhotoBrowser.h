@@ -31,7 +31,6 @@ typedef enum
 }
 //@property (nonatomic, assign) id<CXPhotoBrowserDataSource> dataSource;
 //@property (nonatomic, assign) id<CXPhotoBrowserDelegate> delegate;
-@property (nonatomic, assign) CXPhotoLoadingView *currentPhotoLoadingView;
 @property (nonatomic, readonly) NSUInteger photoCount;
 @property (nonatomic, readonly) NSUInteger currentPageIndex;
 

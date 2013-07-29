@@ -23,11 +23,11 @@
 - (void)displayLoading
 {
     [NSException raise:NSInternalInconsistencyException format:@"Subclasses must override %@", NSStringFromSelector(_cmd)];
-    NSLog(@"displayLoading");
+//    NSLog(@"displayLoading");
 }
 - (void)displayFailure
 {
     [NSException raise:NSInternalInconsistencyException format:@"Subclasses must override %@", NSStringFromSelector(_cmd)];
-    NSLog(@"displayFailure");
+//    NSLog(@"displayFailure");
 }
 @end

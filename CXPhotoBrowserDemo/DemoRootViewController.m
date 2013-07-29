@@ -57,7 +57,7 @@
     
     imageURLs = [[NSArray alloc] initWithObjects:@"http://beauty-places.com/wp-content/uploads/2012/10/TaiPei-101-Wallpaper-3.jpg",@"http://4.bp.blogspot.com/_Dei71iQMoec/S8T1RQvIPbI/AAAAAAAAGK0/jDBh_BKubx0/s1600/cat50.jpg",@"http://images1.fanpop.com/images/image_uploads/Funny-Cat-Pictures-animal-humor-935491_500_375.jpg",@"http://zef.me/wp-content/uploads/2008/02/funny-cat.jpg", @"http://wallpaperdev.com/stock/cute-cat-close-up.jpg",@"http://3.bp.blogspot.com/-J6WK7HAE_78/T1lvmpI8FAI/AAAAAAAACSI/xrcJT7el-Tk/s1600/cute+cat+funny.jpg", nil];
     
-    descriptions = [[NSArray alloc] initWithObjects:@"Taipei 101 (Chinese: 臺北101 / 台北101), formerly known as the Taipei World Financial Center, is a landmark skyscraper located in Xinyi District, Taipei, Taiwan. ",@"http://3.bp.blogspot.com/-J6WK7HAE_78/T1lvmpI8FAI/AAAAAAAACSI/xrcJT7el-Tk/s1600/cute+cat+funny.jpg",@"http://4.bp.blogspot.com/_Dei71iQMoec/S8T1RQvIPbI/AAAAAAAAGK0/jDBh_BKubx0/s1600/cat50.jpg",@"http://images1.fanpop.com/images/image_uploads/Funny-Cat-Pictures-animal-humor-935491_500_375.jpg",@"http://zef.me/wp-content/uploads/2008/02/funny-cat.jpg", @"", nil];
+    descriptions = [[NSArray alloc] initWithObjects:@"Taipei 101 (Chinese: 臺北101 / 台北101), formerly known as the Taipei World Financial Center, is a landmark skyscraper located in Xinyi District, Taipei, Taiwan. ",@"http://3.bp.blogspot.com/-J6WK7HAE_78/T1lvmpI8FAI/AAAAAAAACSI/xrcJT7el-Tk/s1600/cute+cat+funny.jpg",@"http://4.bp.blogspot.com/_Dei71iQMoec/S8T1RQvIPbI/AAAAAAAAGK0/jDBh_BKubx0/s1600/cat50.jpg",@"http://images1.fanpop.com/images/image_uploads/Funny-Cat-Pictures-animal-humor-935491_500_375.jpg",@"http://zef.me/wp-content/uploads/2008/02/funny-cat.jpg", @"",@"like.png", nil];
     
     for (int i = 0; i < [imageURLs count]; i++)
     {
@@ -66,6 +66,9 @@
         
         [self.photoDataSource addObject:photo];
     }
+    
+    CXPhoto *image = [[CXPhoto alloc] initWithImage:[UIImage imageNamed:@"like.png"]];
+    [self.photoDataSource addObject:image];
 }
 
 - (void)didReceiveMemoryWarning

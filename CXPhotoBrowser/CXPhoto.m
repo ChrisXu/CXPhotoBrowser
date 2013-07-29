@@ -88,10 +88,11 @@ caption = _caption;
 	}
 }
 
-//- (UIView *)photoLoadingView;
-//{
-//    return _photoLoadingView;
-//}
+- (UIView *)photoLoadingView;
+{
+    CXPhotoLoadingView *defaultPhotoLoadingView = [[CXPhotoLoadingView alloc] init];
+    return defaultPhotoLoadingView;;
+}
 
 #pragma mark - CXPhotoProtocol Notify
 - (void)notifyImageDidStartLoad
