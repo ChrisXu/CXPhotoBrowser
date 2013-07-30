@@ -9,7 +9,7 @@
 #import "CXTapDetectingView.h"
 
 @implementation CXTapDetectingView
-
+@synthesize tapDelegate;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -28,4 +28,18 @@
 }
 */
 
+- (void)handleSingleTap:(UITouch *)touch
+{
+    
+}
+
+- (void)handleDoubleTap:(UITouch *)touch
+{
+    
+}
+
+- (void)handleTripleTap:(UITouch *)touch
+{
+    
+}
 @end

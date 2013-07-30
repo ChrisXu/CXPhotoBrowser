@@ -26,11 +26,6 @@
 
 - (void)loadImageFromURLAsync:(NSURL *)url
 {
-    if (!self.photoLoadingView)
-    {
-        self.photoLoadingView = [[DemoPhotoLoadingView alloc] init];
-    }
-    
     [self notifyImageDidStartLoad];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadWithURL:url options:0 progress:^(NSUInteger receivedSize, long long expectedSize)
@@ -57,6 +52,11 @@
 
 - (UIView *)photoLoadingView
 {
+    if (!_photoLoadingView)
+    {
+        _photoLoadingView = [[DemoPhotoLoadingView alloc] initWithPhoto:self];
+    }
+    
     return _photoLoadingView;
 }
 @end

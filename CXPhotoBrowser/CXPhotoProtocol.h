@@ -11,6 +11,7 @@
 #define NFCXPhotoImageDidStartLoad @"NFCXPhotoImageDidStartLoad"
 #define NFCXPhotoImageDidFinishLoad @"NFCXPhotoImageDidFinishLoad"
 #define NFCXPhotoImageDidFailLoadWithError @"NFCXPhotoImageDidFailLoadWithError"
+#define NFCXPhotoImageDidStartReload @"NFCXPhotoImageDidStartReload"
 
 @protocol CXPhotoProtocol <NSObject>
 
@@ -22,11 +23,11 @@
 
 @optional
 
-- (NSString *)caption;
 - (UIView *)photoLoadingView;
 //Notify
 - (void)notifyImageDidStartLoad;
 - (void)notifyImageDidFinishLoad;
 - (void)notifyImageDidFailLoadWithError:(NSError *)error;
+- (void)notifyImageDidStartReload;
 
 @end

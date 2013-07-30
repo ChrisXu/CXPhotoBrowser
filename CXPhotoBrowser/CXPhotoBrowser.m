@@ -54,6 +54,7 @@
     BOOL _viewIsActive;
     BOOL _didSavePreviousStateOfNavBar;
     BOOL _shouldUseDefaultUINavigationBar;
+    BOOL _supportReload;
 }
 
 // Layout
@@ -109,7 +110,7 @@
 - (void)handleCXPhotoImageDidStartLoad:(NSNotification *)notification;
 - (void)handleCXPhotoImageDidFinishLoad:(NSNotification *)notification;
 - (void)handleCXPhotoImageDidFailLoadWithError:(NSNotification *)notification;
-
+- (void)handleCXPhotoImageDidStartReload:(NSNotification *)notification;
 // Action
 - (void)doneButtonPressed:(id)sender;
 
@@ -137,6 +138,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         _viewIsActive = NO;
         _didSavePreviousStateOfNavBar = NO;
         _shouldUseDefaultUINavigationBar = NO;
+        _supportReload = YES;
         _photoCount = NSNotFound;
         _currentPageIndex = 0;
         _visiblePages = [[NSMutableSet alloc] init];
@@ -156,6 +158,11 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(handleCXPhotoImageDidFailLoadWithError:)
                                                      name:NFCXPhotoImageDidFailLoadWithError
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(handleCXPhotoImageDidStartReload:)
+                                                     name:NFCXPhotoImageDidStartReload
                                                    object:nil];
     }
     return self;
@@ -283,7 +290,6 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 	for (CXZoomingScrollView *page in _visiblePages) {
         NSUInteger index = PAGE_INDEX(page);
 		page.frame = [self frameForPageAtIndex:index];
-//        page.captionView.frame = [self frameForCaptionView:page.captionView atIndex:index];
 		[page setMaxMinZoomScalesForCurrentBounds];
 	}
 	
@@ -457,13 +463,6 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 			[self configurePage:page forIndex:index];
 			[_visiblePages addObject:page];
 			[_pagingScrollView addSubview:page];
-            
-            // Add caption
-//            MWCaptionView *captionView = [self captionViewForPhotoAtIndex:index];
-//            captionView.frame = [self frameForCaptionView:captionView atIndex:index];
-//            [_pagingScrollView addSubview:captionView];
-//            page.captionView = captionView;
-            
 		}
 	}
 }
@@ -477,6 +476,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (CXZoomingScrollView *)pageDisplayedAtIndex:(NSUInteger)index
 {
     CXZoomingScrollView *thePage = nil;
+    thePage.isPhotoSupportedReload = _supportReload;
 	for (CXZoomingScrollView *page in _visiblePages) {
 		if (PAGE_INDEX(page) == index) {
 			thePage = page; break;
@@ -488,6 +488,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (CXZoomingScrollView *)pageDisplayingPhoto:(id <CXPhotoProtocol>)photo
 {
     CXZoomingScrollView *thePage = nil;
+    thePage.isPhotoSupportedReload = _supportReload;
 	for (CXZoomingScrollView *page in _visiblePages) {
 		if (page.photo == photo) {
 			thePage = page; break;
@@ -499,6 +500,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (CXZoomingScrollView *)dequeueRecycledPage
 {
     CXZoomingScrollView *page = [_recycledPages anyObject];
+    page.isPhotoSupportedReload = _supportReload;
 	if (page) {
 		[_recycledPages removeObject:page];
 	}
@@ -507,6 +509,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (void)configurePage:(CXZoomingScrollView *)page forIndex:(NSUInteger)index
 {
+    page.isPhotoSupportedReload = _supportReload;
     page.frame = [self frameForPageAtIndex:index];
     page.tag = PAGE_INDEX_TAG_OFFSET + index;
     page.photo = [self photoAtIndex:index];
@@ -668,10 +671,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 - (void)reloadCurrentPhoto
 {
     id <CXPhotoProtocol> currentPhoto = [self photoAtIndex:_currentPageIndex];
-    if ([currentPhoto underlyingImage]) {
-        // photo loaded so load ajacent now
-        [self loadAdjacentPhotosIfNecessary:currentPhoto];
-    }
+    [currentPhoto loadUnderlyingImageAndNotify];
 }
 
 // Navigation
@@ -801,6 +801,10 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     // Reset
     _photoCount = NSNotFound;
     
+    if ([_delegate respondsToSelector:@selector(supportReload)])
+    {
+        _supportReload = [_delegate supportReload];
+    }
     // Get data
     NSUInteger numberOfPhotos = [self numberOfPhotos];
     [self unloadAllUnderlyingPhotos];
@@ -905,7 +909,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 {
     id <CXPhotoProtocol> photo = [notification object];
     //show loading view
-    NSUInteger index = [self indexOfPhoto:photo];
+//    NSUInteger index = [self indexOfPhoto:photo];
     
     CXZoomingScrollView *page = [self pageDisplayingPhoto:photo];
     if (page)
@@ -952,6 +956,10 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     }
 }
 
+- (void)handleCXPhotoImageDidStartReload:(NSNotification *)notification
+{
+    [self reloadCurrentPhoto];
+}
 #pragma mark - Rotation;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {

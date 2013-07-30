@@ -23,7 +23,7 @@
 }
 @property (nonatomic, assign) CXPhotoBrowser *photoBrowser;
 
-- (void)checkPhotoLoadingView;
+- (void)layoutPhotoLoadingView;
 
 @end
 
@@ -35,6 +35,7 @@
     if ((self = [super init]))
     {
         self.isPhotoSupportedPanGesture = YES;
+        self.isPhotoSupportedReload = YES;
         // Delegate
         self.photoBrowser = browser;
         
@@ -107,50 +108,40 @@
     
     if (_photo)
     {
-        [self checkPhotoLoadingView];
         [self displayImage];
     }
 }
 
 #pragma mark - PV
-- (void)checkPhotoLoadingView
+- (void)layoutPhotoLoadingView
 {
-    if (!_photoLoadingView)
+    [_photoLoadingView removeFromSuperview];
+    if ([_photo respondsToSelector:@selector(photoLoadingView)])
     {
-        if ([_photo photoLoadingView])
-        {
-            _photoLoadingView = (CXPhotoLoadingView *)[_photo photoLoadingView];
-            [_photoLoadingView setTag:PHOTO_LOADIG_VIEW_TAG];
-            [_photoLoadingView setFrame:_photoBrowser.view.bounds];
-            _photoLoadingView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin |
-            UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-            [self setUserInteractionEnabled:NO];
-        }
-        else
-        {
-            //default loading view
-        }
+        _photoLoadingView = (CXPhotoLoadingView *)[_photo photoLoadingView];
+        _photoLoadingView.supportReload = self.isPhotoSupportedReload;
+        [_photoLoadingView setTag:PHOTO_LOADIG_VIEW_TAG];
+        [_photoLoadingView setFrame:_photoBrowser.view.bounds];
+        _photoLoadingView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin |
+        UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
+        [self setUserInteractionEnabled:NO];
+        [self addSubview:_photoLoadingView];
     }
 }
 
 #pragma mark - PB
 - (void)displayImageStartLoading
 {
-    [self checkPhotoLoadingView];
-    if (![self viewWithTag:PHOTO_LOADIG_VIEW_TAG])
+    if ([_photoLoadingView respondsToSelector:@selector(displayLoading)])
     {
-        [self addSubview:_photoLoadingView];
         [_photoLoadingView displayLoading];
     }
-    
-//    [_photoLoadingView displayLoading];
 }
 
 - (void)displayImage
 {
     if (_photo && !_photoImageView.image)
     {
-		[_photoLoadingView removeFromSuperview];
         [self setUserInteractionEnabled:YES];
 		// Reset
 		self.maximumZoomScale = 1;
@@ -162,6 +153,7 @@
 		UIImage *img = [self.photoBrowser imageForPhoto:_photo];
 		if (img)
         {
+            [_photoLoadingView removeFromSuperview];
 			// Set image
 			_photoImageView.image = img;
 			_photoImageView.hidden = NO;
@@ -180,6 +172,7 @@
         else
         {
 			// Hide image view
+            [self layoutPhotoLoadingView];
 			_photoImageView.hidden = YES;
 		}
 		[self setNeedsLayout];
@@ -188,12 +181,7 @@
 
 - (void)displayImageFailure
 {
-    [self checkPhotoLoadingView];
-    if (![self viewWithTag:PHOTO_LOADIG_VIEW_TAG])
-    {
-        [self addSubview:_photoLoadingView];
-    }
-    
+    [self setUserInteractionEnabled:YES];
     [_photoLoadingView displayFailure];
 }
 
@@ -244,8 +232,6 @@
 {
     shouldSupportedPanGesture = NO;
     self.photo = nil;
-//    [_captionView removeFromSuperview];
-//    self.captionView = nil;
 }
 
 #pragma mark - UIScrollViewDelegate

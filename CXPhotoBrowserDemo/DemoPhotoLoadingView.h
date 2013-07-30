@@ -11,7 +11,6 @@
 @interface DemoPhotoLoadingView : CXPhotoLoadingView
 <CXPhotoLoadingViewProtocol>
 
-@property (nonatomic, strong) UIActivityIndicatorView *indicator;
 @property (nonatomic, strong) UIProgressView *progressView;
 - (void)loadWithReceivedSize:(NSUInteger)receivedSize expectedSize:(long)expectedSize;
 

@@ -24,6 +24,7 @@
     CXPhotoLoadingView *_photoLoadingView;
 }
 @property (nonatomic) BOOL isPhotoSupportedPanGesture; //default is YES
+@property (nonatomic) BOOL isPhotoSupportedReload;
 @property (nonatomic, strong) id<CXPhotoProtocol> photo;
 - (id)initWithPhotoBrowser:(CXPhotoBrowser *)browser;
 - (void)displayImageStartLoading;

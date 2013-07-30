@@ -9,21 +9,20 @@
 #import "CXPhoto.h"
 
 @interface CXPhoto ()
+<NSURLConnectionDelegate>
 {
     // Image Sources
     NSString *_photoPath;
     NSURL *_photoURL;
     
-    // Other
-    NSString *_caption;
+    NSMutableData *imageRequestData;
+    NSURLConnection *imageConnection;
 }
-
 
 @end
 
 @implementation CXPhoto
-@synthesize underlyingImage = _underlyingImage,
-caption = _caption;
+@synthesize underlyingImage = _underlyingImage;
 
 #pragma mark Class Methods
 
@@ -40,7 +39,6 @@ caption = _caption;
 }
 
 #pragma mark NSObject
-
 - (id)initWithImage:(UIImage *)image {
 	if ((self = [super init])) {
 		_underlyingImage = image;
@@ -79,6 +77,17 @@ caption = _caption;
 - (void)loadImageFromURLAsync:(NSURL *)url
 {
     //implement
+    [self notifyImageDidStartLoad];
+    NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
+    imageConnection = [[NSURLConnection alloc] initWithRequest:imageRequest delegate:self startImmediately:NO];
+    
+    if (imageConnection)
+    {
+        imageRequestData = [[NSMutableData alloc] init];
+    }
+    [imageConnection scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                          forMode:NSDefaultRunLoopMode];
+    [imageConnection start];
 }
 
 - (void)unloadImage
@@ -88,9 +97,17 @@ caption = _caption;
 	}
 }
 
+- (void)reloadImage
+{
+    if ([self respondsToSelector:@selector(notifyImageDidStartReload)])
+    {
+        [self notifyImageDidStartReload];
+    }
+}
+
 - (UIView *)photoLoadingView;
 {
-    CXPhotoLoadingView *defaultPhotoLoadingView = [[CXPhotoLoadingView alloc] init];
+    CXPhotoLoadingView *defaultPhotoLoadingView = [[CXPhotoLoadingView alloc] initWithPhoto:self];
     return defaultPhotoLoadingView;;
 }
 
@@ -117,6 +134,12 @@ caption = _caption;
     });
 }
 
+- (void)notifyImageDidStartReload
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:NFCXPhotoImageDidStartReload object:self userInfo:nil];
+    });
+}
 #pragma mark - CXPhotoProtocol Image Process
 - (UIImage *)underlyingImage
 {
@@ -149,4 +172,22 @@ caption = _caption;
     [self performSelector:@selector(unloadImage)];
 }
 
+#pragma mark - NSURLConnectionDelegate
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [imageRequestData appendData:data];
+}
+
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    _underlyingImage = [UIImage imageWithData:imageRequestData];
+    imageRequestData = nil;
+    [self notifyImageDidFinishLoad];
+}
+
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    [self notifyImageDidFailLoadWithError:error];
+}
 @end

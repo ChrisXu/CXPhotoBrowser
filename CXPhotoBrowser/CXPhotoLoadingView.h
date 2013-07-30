@@ -10,10 +10,13 @@
 #import "CXPhotoLoadingViewProtocol.h"
 
 @class CXPhotoBrowser;
+@class CXPhoto;
 
 @interface CXPhotoLoadingView : UIView
 <CXPhotoLoadingViewProtocol>
 
-@property (nonatomic, assign, readonly) CXPhotoBrowser *photoBrowser;
+@property (nonatomic) BOOL supportReload;
+
+- (id)initWithPhoto:(CXPhoto *)photo;
 
 @end

@@ -1,4 +1,6 @@
-CXPhotoBrowser - Customize your photobrowser for iOS.
+#CXPhotoBrowser - Customize your photobrowser for iOS.
+
+###v1.1.1
 ==============
 
 A photo browser Inspiring by [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser). Removing the dependcy with other library, so you can choose your favorite Async library to download image online. 
@@ -18,23 +20,21 @@ usage like [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser)
 ```Objective-C 
 photobrowser = [[CXPhotoBrowser alloc] initWithDataSource:self delegate:self];
 ```
+
 *Remember to set the datasource and delegate.
  
 ```Objective-C
 CXPhoto *photo = [[CXPhoto alloc] initWithURL:<#(NSURL)#>];
 [self.photoDataSource addObject:photo];
 ```
-*You should create your own `Photo` class by inherit from `CXPhoto`. And implement 'loadImageFromURLAsync:' for downloading images.
+
+~~*You should create your own `Photo` class by inherit from `CXPhoto`. And implement 'loadImageFromURLAsync:' for downloading images.~~Support in v1.1.1.
+
 *Sample 
 
 ```Objective-C
 - (void)loadImageFromURLAsync:(NSURL *)url
 {
-    if (!self.photoLoadingView)
-    {
-        self.photoLoadingView = [[DemoPhotoLoadingView alloc] init];
-    }
-    
     [self notifyImageDidStartLoad];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadWithURL:url options:0 progress:^(NSUInteger receivedSize, long long expectedSize)
@@ -78,9 +78,22 @@ CXPhoto *photo = [[CXPhoto alloc] initWithURL:<#(NSURL)#>];
 - (CXBrowserToolBarView *)browserToolBarViewOfPhotoBrowser:(CXPhotoBrowser *)photoBrowser withSize:(CGSize)size;
 ```
 
+**Delegate**
+```Objective-C
+- (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index;
+```
+
+```Objective-C
+- (BOOL)supportReload;
+```
+
+**What's new in this version**
+* support default `CXPhoto` to use. 
+* NSLocalizedString
+* Photo Reload Action.(Declare in `CXPhoto`)
+
 **Coming soon**:
 * Handle orientation chagne.
-* Photo Reload.
 * Support more gesture. 
 
 **Supports**:

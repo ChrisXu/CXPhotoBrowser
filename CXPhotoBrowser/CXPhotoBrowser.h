@@ -118,5 +118,12 @@ typedef enum
  @param index The current showing index in photoBrowser.
  @param status 
  */
-- (void)photoBrowser:(CXPhotoBrowser *)photoBrowser currentPhotoAtIndex:(NSUInteger)index didFinishedLoadingWithStatus:(CXPhotoLoadingStatus)status;
+//- (void)photoBrowser:(CXPhotoBrowser *)photoBrowser currentPhotoAtIndex:(NSUInteger)index didFinishedLoadingWithStatus:(CXPhotoLoadingStatus)status;
+
+/**
+
+ 
+ @return supportReload.
+ */
+- (BOOL)supportReload;
 @end

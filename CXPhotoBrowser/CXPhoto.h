@@ -18,8 +18,7 @@
 }
 
 @property (nonatomic, strong, readonly) UIImage *underlyingImage;
-//@property (nonatomic, strong) CXPhotoLoadingView *photoLoadingView;
-@property (nonatomic, strong) NSString *caption;
+
 // Class
 + (CXPhoto *)photoWithImage:(UIImage *)image;
 + (CXPhoto *)photoWithFilePath:(NSString *)path;
@@ -34,5 +33,6 @@
 - (void)loadImageFromFileAsync:(NSString *)path;
 - (void)loadImageFromURLAsync:(NSURL *)url;
 - (void)unloadImage;
+- (void)reloadImage;
 
 @end

@@ -11,9 +11,7 @@
 @protocol CXTapDetectingViewDelegate;
 
 @interface CXTapDetectingView : UIView
-{
-    id <CXTapDetectingViewDelegate> tapDelegate;
-}
+
 @property (nonatomic, assign) id <CXTapDetectingViewDelegate> tapDelegate;
 - (void)handleSingleTap:(UITouch *)touch;
 - (void)handleDoubleTap:(UITouch *)touch;
