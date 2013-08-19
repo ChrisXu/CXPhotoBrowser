@@ -76,6 +76,10 @@
 
 - (void)loadImageFromURLAsync:(NSURL *)url
 {
+    if (imageConnection) {
+        [imageConnection cancel];
+        imageConnection = nil;
+    }
     //implement
     [self notifyImageDidStartLoad];
     NSURLRequest *imageRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];

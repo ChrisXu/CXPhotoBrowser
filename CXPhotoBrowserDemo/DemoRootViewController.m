@@ -89,6 +89,7 @@
 #pragma mark - Actions
 - (IBAction)showBrowserWithPresent:(id)sender
 {
+    [self.browser setInitialPageIndex:2];
     [self presentViewController:self.browser animated:YES completion:^{
         
     }];
@@ -96,6 +97,7 @@
 
 - (IBAction)showBrowserWithPush:(id)sender
 {
+    [self.browser setInitialPageIndex:4];
     [self.navigationController pushViewController:self.browser animated:YES];
 }
 

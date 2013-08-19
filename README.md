@@ -1,4 +1,4 @@
-#CXPhotoBrowser v1.1.1 - Customize your photobrowser for iOS.
+#CXPhotoBrowser - Customize your photobrowser for iOS.
 
 A photo browser Inspiring by [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser). Removing the dependcy with other library, so you can choose your favorite Async library to download image online. 
 Supporting with high level of customization, including Navigationbar, Toolbar, Loading process placeholder and Loading failure placeholder.
@@ -7,9 +7,16 @@ You can build a photo browser similar to facebook.
 ---
 ![ScreenShot 1](screenshot1.png), ![ScreenShot 2](screenshot2.png),
 
+---
+##Installation (v1.1.1)
+
+* CocoaPods add `pod 'CXPhotoBrowser'`
+
+---
+
 usage like [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser)
 
-**How to use**
+###How to use
 
 
 *Create a photobrowser(CXPhotoBrowser).
@@ -52,7 +59,7 @@ CXPhoto *photo = [[CXPhoto alloc] initWithURL:<#(NSURL)#>];
 }
 ```
 
-**Data Source**
+###Data Source
 *Required methods(2):
 
 ```Objective-C 
@@ -75,7 +82,7 @@ CXPhoto *photo = [[CXPhoto alloc] initWithURL:<#(NSURL)#>];
 - (CXBrowserToolBarView *)browserToolBarViewOfPhotoBrowser:(CXPhotoBrowser *)photoBrowser withSize:(CGSize)size;
 ```
 
-**Delegate**
+###Delegate
 ```Objective-C
 - (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index;
 ```
@@ -84,19 +91,17 @@ CXPhoto *photo = [[CXPhoto alloc] initWithURL:<#(NSURL)#>];
 - (BOOL)supportReload;
 ```
 
-**What's new in this version**
-v1.1.1
+###What's new in this version (v1.1.1)
 * support default `CXPhoto` to use. 
 * NSLocalizedString
 * Photo Reload Action.(Declare in `CXPhoto`)
 
-**Coming soon**:
-v1.2.0
+###Next (v1.2.0)
 * Handle orientation chagne.
 * Support more gesture. 
 * Support Facebook's album style.
 
-**Supports**:
+###Supports
 * iOS 4 or later.
 * Xcode 4.2 (CXPhotoBrowser uses ARC)
 * Required frameworks: Foundation, UIKit, CoreGraphics and ImageIO.
