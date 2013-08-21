@@ -25,6 +25,7 @@
 }
 @property (nonatomic) BOOL isPhotoSupportedPanGesture; //default is YES
 @property (nonatomic) BOOL isPhotoSupportedReload;
+@property (nonatomic) NSUInteger index;
 @property (nonatomic, strong) id<CXPhotoProtocol> photo;
 - (id)initWithPhotoBrowser:(CXPhotoBrowser *)browser;
 - (void)displayImageStartLoading;

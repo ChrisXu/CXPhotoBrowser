@@ -55,6 +55,7 @@
     BOOL _didSavePreviousStateOfNavBar;
     BOOL _shouldUseDefaultUINavigationBar;
     BOOL _supportReload;
+    BOOL _scrolling;
 }
 
 // Layout
@@ -87,7 +88,7 @@
 // Loadingview
 
 // Navigation
-- (void)currentPageDidUpdated;
+- (void)currentPageDidUpdatedWithIndex:(NSUInteger)index;
 
 // Controls (NavigationBar & ToolBar)
 - (BOOL)shouldUseDefaultUINavigationBar;
@@ -125,7 +126,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 @implementation CXPhotoBrowser
 @synthesize photoCount = _photoCount;
 @synthesize currentPageIndex = _currentPageIndex;
-
+@synthesize delegate = _delegate;
 - (id)init
 {
     self = [super init];
@@ -136,6 +137,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         _performingLayout = NO; // Reset on view did appear
 		_rotating = NO;
         _viewIsActive = NO;
+        _scrolling = NO;
         _didSavePreviousStateOfNavBar = NO;
         _shouldUseDefaultUINavigationBar = NO;
         _supportReload = YES;
@@ -365,7 +367,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     [_recycledPages removeAllObjects];
     
     // Navigation
-    [self currentPageDidUpdated];
+    [self changeToPageAtIndex:_currentPageIndex];
     
     // Content offset
 	_pagingScrollView.contentOffset = [self contentOffsetForPageAtIndex:_currentPageIndex];
@@ -422,7 +424,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     if (index >= [self numberOfPhotos]) index = [self numberOfPhotos]-1;
     _currentPageIndex = index;
 	if ([self isViewLoaded]) {
-        [self changeToPageAtIndex:index];
+//        [self changeToPageAtIndex:index];
         if (!_viewIsActive) [self tilePages]; // Force tiling if view is not visible
     }
 }
@@ -509,6 +511,10 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (void)configurePage:(CXZoomingScrollView *)page forIndex:(NSUInteger)index
 {
+    page.index = index;
+    if (!_scrolling) {
+        [self currentPageDidUpdatedWithIndex:index];
+    }
     page.isPhotoSupportedReload = _supportReload;
     page.frame = [self frameForPageAtIndex:index];
     page.tag = PAGE_INDEX_TAG_OFFSET + index;
@@ -554,7 +560,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     if (index < [self numberOfPhotos]) {
 		CGRect pageFrame = [self frameForPageAtIndex:index];
 		_pagingScrollView.contentOffset = CGPointMake(pageFrame.origin.x - PADDING, 0);
-        [self currentPageDidUpdated];
+//        [self currentPageDidUpdated];
 	}
 }
 #pragma mark - Frame Calculations
@@ -675,16 +681,16 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 }
 
 // Navigation
-- (void)currentPageDidUpdated
+- (void)currentPageDidUpdatedWithIndex:(NSUInteger)index
 {
     if (_delegate && [_delegate respondsToSelector:@selector(photoBrowser:didChangedToPageAtIndex:)])
     {
-        [_delegate photoBrowser:self didChangedToPageAtIndex:_currentPageIndex];
+        [_delegate photoBrowser:self didChangedToPageAtIndex:index];
     }
     
     if (_shouldUseDefaultUINavigationBar)
     {
-        self.title = [NSString stringWithFormat:@"%i of %i", _currentPageIndex+1, _photoCount];
+        self.title = [NSString stringWithFormat:@"%i of %i", index+1, _photoCount];
     }
 }
 
@@ -993,10 +999,9 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	
     // Checks
 	if (!_viewIsActive || _performingLayout || _rotating) return;
-	
+	_scrolling = YES;
 	// Tile pages
 	[self tilePages];
 	
@@ -1016,8 +1021,18 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 	
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-	// Update nav when page changes
-	[self currentPageDidUpdated];
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        _scrolling = NO;
+        [self currentPageDidUpdatedWithIndex:_currentPageIndex];
+    }
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    _scrolling = NO;
+    [self currentPageDidUpdatedWithIndex:_currentPageIndex];
+}
+
 @end

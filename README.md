@@ -88,6 +88,11 @@ CXPhoto *photo = [[CXPhoto alloc] initWithURL:<#(NSURL)#>];
 ```
 
 ```Objective-C
+- (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didFinishLoadingWithCurrentImage:(UIImage *)currentImage;
+```
+
+
+```Objective-C
 - (BOOL)supportReload;
 ```
 

@@ -13,13 +13,6 @@
 #import "CXBrowserNavBarView.h"
 #import "CXBrowserToolBarView.h"
 
-typedef enum
-{
-    CXPhotoStartLoading = 0,
-    CXPhotoFinishLoading = 1,
-    CXPhotoDidFailLoading = 2
-}CXPhotoLoadingStatus;
-
 @protocol CXPhotoBrowserDataSource;
 @protocol CXPhotoBrowserDelegate;
 @interface CXPhotoBrowser : UIViewController
@@ -33,7 +26,7 @@ typedef enum
 //@property (nonatomic, assign) id<CXPhotoBrowserDelegate> delegate;
 @property (nonatomic, readonly) NSUInteger photoCount;
 @property (nonatomic, readonly) NSUInteger currentPageIndex;
-
+@property (nonatomic, readonly) id<CXPhotoBrowserDelegate> delegate;
 - (id)initWithDataSource:(id <CXPhotoBrowserDataSource>)dataSource  delegate:(id <CXPhotoBrowserDelegate>)delegate;
 
 // Reloads the photo browser and refetches data
@@ -73,32 +66,40 @@ typedef enum
 @optional
 
 /**
- @param orientation 
- 
- @return Height for your customlize NavigationBarView.
+ *  Height for your customlize NavigationBarView.
+ *
+ *  @param orientation
+ *
+ *  @return Height
  */
 - (CGFloat)heightForNavigationBarInInterfaceOrientation:(UIInterfaceOrientation)orientation;
 
 /**
- @param orientation 
- 
- @return Height for your customlize ToolBarView.
+ *  Height for your customlize ToolBarView.
+ *
+ *  @param orientation
+ *
+ *  @return Height
  */
 - (CGFloat)heightForToolBarInInterfaceOrientation:(UIInterfaceOrientation)orientation;
 
 /**
- @param photoBrower The current photobrowser to present.
- @param size NavigationBarView will be resize as this parameter. Make sure your view will fit the size.
- 
- @return A customlize NavigationBarView to show on top.
+ *  A customlize NavigationBarView to show on top.
+ *
+ *  @param photoBrowser The current photobrowser to present.
+ *  @param size         NavigationBarView will be resize as this parameter. Make sure your view will fit the size.
+ *
+ *  @return NavBarView
  */
 - (CXBrowserNavBarView *)browserNavigationBarViewOfOfPhotoBrowser:(CXPhotoBrowser *)photoBrowser withSize:(CGSize)size;
 
 /**
- @param photoBrower The current photobrowser to present.
- @param size ToolBarView will be resize as this parameter. Make sure your view will fit the size.
- 
- @return A customlize ToolBarView to show on bottom.
+ *  A customlize ToolBarView to show on bottom.
+ *
+ *  @param photoBrowser The current photobrowser to present.
+ *  @param size         ToolBarView will be resize as this parameter. Make sure your view will fit the size.
+ *
+ *  @return ToolBarView.
  */
 - (CXBrowserToolBarView *)browserToolBarViewOfPhotoBrowser:(CXPhotoBrowser *)photoBrowser withSize:(CGSize)size;
 @end
@@ -108,22 +109,25 @@ typedef enum
 @optional
 
 /**
- @param photoBrower The current photobrowser to present.
- @param index The current showing index in photoBrowser.
+ *  called when currentIndex will change
+ *
+ *  @param photoBrowser The current photobrowser to present.
+ *  @param index        The current showing index in photoBrowser.
  */
 - (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index;
 
 /**
- @param photoBrower The current photobrowser to present.
- @param index The current showing index in photoBrowser.
- @param status 
+ *  called when the current image is finished loading.
+ *
+ *  @param photoBrowser The current photobrowser to present.
+ *  @param currentImage currentImage
  */
-//- (void)photoBrowser:(CXPhotoBrowser *)photoBrowser currentPhotoAtIndex:(NSUInteger)index didFinishedLoadingWithStatus:(CXPhotoLoadingStatus)status;
+- (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didFinishLoadingWithCurrentImage:(UIImage *)currentImage;
 
 /**
-
- 
- @return supportReload.
+ *  called to check if support reload.
+ *
+ *  @return supportReload
  */
 - (BOOL)supportReload;
 @end

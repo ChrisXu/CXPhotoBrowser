@@ -227,6 +227,16 @@
     }
 }
 
+- (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didFinishLoadingWithCurrentImage:(UIImage *)currentImage
+{
+    if (currentImage) {
+        //loading success
+    }
+    else {
+        //loading failure
+    }
+}
+
 - (BOOL)supportReload
 {
     return YES;

@@ -153,6 +153,11 @@
 		UIImage *img = [self.photoBrowser imageForPhoto:_photo];
 		if (img)
         {
+            id photoBrowserDelegate = self.photoBrowser.delegate;
+            if (photoBrowserDelegate && [photoBrowserDelegate respondsToSelector:@selector(photoBrowser:didFinishLoadingWithCurrentImage:)]) {
+                [photoBrowserDelegate photoBrowser:self.photoBrowser didFinishLoadingWithCurrentImage:img];
+            }
+            
             [_photoLoadingView removeFromSuperview];
 			// Set image
 			_photoImageView.image = img;
@@ -181,6 +186,10 @@
 
 - (void)displayImageFailure
 {
+    id photoBrowserDelegate = self.photoBrowser.delegate;
+    if (photoBrowserDelegate && [photoBrowserDelegate respondsToSelector:@selector(photoBrowser:didFinishLoadingWithCurrentImage:)]) {
+        [photoBrowserDelegate photoBrowser:self.photoBrowser didFinishLoadingWithCurrentImage:nil];
+    }
     [self setUserInteractionEnabled:YES];
     [_photoLoadingView displayFailure];
 }
