@@ -32,6 +32,12 @@ CXPhoto *photo = [[CXPhoto alloc] initWithURL:<#(NSURL)#>];
 [self.photoDataSource addObject:photo];
 ```
 
+Add the view to your current view.
+```Objective-C
+[photobrowser setInitialPageIndex:indexPath.row];
+[self.view addSubview:photobrowser.view];
+```
+
 ~~*You should create your own `Photo` class by inherit from `CXPhoto`. And implement 'loadImageFromURLAsync:' for downloading images.~~Support in v1.1.1.
 
 *Sample 
