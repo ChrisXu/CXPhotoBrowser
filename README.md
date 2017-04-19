@@ -1,4 +1,4 @@
-#CXPhotoBrowser - Customize your photobrowser for iOS.
+# CXPhotoBrowser - Customize your photobrowser for iOS.
 
 A photo browser Inspiring by [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser). Removing the dependcy with other library, so you can choose your favorite Async library to download image online. 
 Supporting with high level of customization, including Navigationbar, Toolbar, Loading process placeholder and Loading failure placeholder.
@@ -8,7 +8,7 @@ You can build a photo browser similar to facebook.
 ![ScreenShot 1](screenshot1.png), ![ScreenShot 2](screenshot2.png),
 
 ---
-##Installation (v1.1.1)
+## Installation (v1.1.1)
 
 * CocoaPods add `pod 'CXPhotoBrowser'`
 
@@ -16,7 +16,7 @@ You can build a photo browser similar to facebook.
 
 usage like [@MWPhotoBrowser](https://github.com/mwaterfall/MWPhotoBrowser)
 
-###How to use
+### How to use
 
 
 *Create a photobrowser(CXPhotoBrowser).
@@ -65,7 +65,7 @@ Add the view to your current view.
 }
 ```
 
-###Data Source
+### Data Source
 *Required methods(2):
 
 ```Objective-C 
@@ -88,7 +88,7 @@ Add the view to your current view.
 - (CXBrowserToolBarView *)browserToolBarViewOfPhotoBrowser:(CXPhotoBrowser *)photoBrowser withSize:(CGSize)size;
 ```
 
-###Delegate
+### Delegate
 ```Objective-C
 - (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index;
 ```
@@ -102,29 +102,29 @@ Add the view to your current view.
 - (BOOL)supportReload;
 ```
 
-###What's new in this version (v1.1.1)
+### What's new in this version (v1.1.1)
 * support default `CXPhoto` to use. 
 * NSLocalizedString
 * Photo Reload Action.(Declare in `CXPhoto`)
 
-###Next (v1.2.0)
+### Next (v1.2.0)
 * Handle orientation chagne.
 * Support more gesture. 
 * Support Facebook's album style.
 
-###Supports
+### Supports
 * iOS 4 or later.
 * Xcode 4.2 (CXPhotoBrowser uses ARC)
 * Required frameworks: Foundation, UIKit, CoreGraphics and ImageIO.
 
 ---
-##Contact
+## Contact
 <a href="https://twitter.com/taterctl" class="twitter-follow-button" data-show-count="ture" data-lang="zh-tw">Follow @taterctl</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 
 ---
-##License
+## License
 
 Copyright (c) 2013 Chris Xu, Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
 
